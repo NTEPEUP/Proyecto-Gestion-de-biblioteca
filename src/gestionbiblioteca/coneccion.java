@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
  * @author Nelson
  */
 public class coneccion {
+    //declaramos variable
     Connection conexion=null;
     
     String usuario="postgres";

@@ -15,7 +15,7 @@ public class GestionBiblioteca {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //probando la conexion 
+        //probando la conexion .
    
         coneccion establecer=new coneccion();
         establecer.establecerConexion();

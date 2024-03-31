@@ -9,5 +9,6 @@ package gestionbiblioteca;
  * @author Nelson
  */
 public class libro {
+    //clase libro
     
 }

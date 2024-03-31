@@ -11,6 +11,7 @@ import java.beans.beancontext.BeanContextMembershipEvent;
  * @author Nelson
  */
 public class cliente {
+    //clase cliente
     private String nombre;
     private String direccion;
     private String telefono;
