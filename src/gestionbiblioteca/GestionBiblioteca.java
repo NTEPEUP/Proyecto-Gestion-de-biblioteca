@@ -18,9 +18,9 @@ public class GestionBiblioteca {
         //probando la conexion .
    
         coneccion establecer=new coneccion();
+       
+        
         establecer.establecerConexion();
-        
-        
      
         
         

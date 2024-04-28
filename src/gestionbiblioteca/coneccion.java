@@ -16,10 +16,10 @@ public class coneccion {
     //declaramos variable
     Connection conexion=null;
     
-    String usuario="postgres";
-    String contrasenia="nelson15";
-    String bd="cliente";
-    String ip="localhost";
+    String usuario="rhmroadz";
+    String contrasenia="5bvtZddC2M92VTDai6mOYcu7e-pHNJqS";
+    String bd="rhmroadz";
+    String ip="bubble.db.elephantsql.com";
     String puerto="5432";
     
     //String cadena="jdbc prosgresql://"+ip+":"+puerto+":"+bd;

@@ -4,34 +4,36 @@
  */
 package gestionbiblioteca;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Nelsonhhg
  */
-public class libro {
+public class libro implements Serializable{
     
  //definimos los atributos de la clase libro
-private int ISBN;
+private String ISBN;
 private String titulo;
 private String autor;
-private String año;
+private String anio;
 private String editorial;
 private String stock;
 
-    public libro(int ISBN, String titulo, String autor, String año, String editorial, String stock) {
+    public libro(String ISBN, String titulo, String autor, String año, String editorial, String stock) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;
-        this.año = año;
+        this.anio = anio;
         this.editorial = editorial;
         this.stock = stock;
     }
 
-    public int getISBN() {
+    public  String etISBN() {
         return ISBN;
     }
 
-    public void setISBN(int ISBN) {
+    public void setISBN(String ISBN) {
         this.ISBN = ISBN;
     }
 
@@ -52,11 +54,11 @@ private String stock;
     }
 
     public String getAño() {
-        return año;
+        return anio;
     }
 
-    public void setAño(String año) {
-        this.año = año;
+    public void setAño(String anio) {
+        this.anio = anio;
     }
 
     public String getEditorial() {
@@ -73,6 +75,11 @@ private String stock;
 
     public void setStock(String stock) {
         this.stock = stock;
+    }
+
+    @Override
+    public String toString() {
+        return "libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", editorial=" + editorial + '}';
     }
 
 

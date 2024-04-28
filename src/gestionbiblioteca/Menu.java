@@ -4,7 +4,6 @@
  */
 package gestionbiblioteca;
 
-import controlador.View_loginController;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
@@ -24,10 +23,13 @@ public class Menu extends Application {
     
     @Override
     public void start(Stage primaryStage) throws IOException {
-            Parent root=FXMLLoader.load(getClass().getResource("/view/view_login.fxml"));
+       
+        
+    Parent root=FXMLLoader.load(getClass().getResource("/view/login.fxml"));
                     Scene escena=new Scene(root);
                     primaryStage.setScene(escena);
                     primaryStage.show();
+    
     }
 
     /**

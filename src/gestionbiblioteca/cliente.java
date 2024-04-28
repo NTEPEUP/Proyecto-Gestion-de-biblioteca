@@ -5,12 +5,13 @@
 package gestionbiblioteca;
 
 import java.beans.beancontext.BeanContextMembershipEvent;
+import java.io.Serializable;
 
 /**
  *
  * @author Nelson
  */
-public class cliente {
+public class cliente implements Serializable{
     //clase cliente
     private String nombre;
     private String direccion;
