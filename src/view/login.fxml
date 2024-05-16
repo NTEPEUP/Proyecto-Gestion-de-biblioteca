@@ -9,24 +9,24 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="473.0" style="-fx-background-color: #000000;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
+<AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="417.0" style="-fx-background-color: #a5d6a7;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
    <children>
-      <AnchorPane layoutX="43.0" layoutY="43.0" prefHeight="298.0" prefWidth="388.0" style="-fx-background-color: #00acc1;">
+      <AnchorPane layoutY="-1.0" prefHeight="386.0" prefWidth="445.0" style="-fx-background-color: #00acc1;">
          <children>
-            <TextField fx:id="txtUser" layoutX="120.0" layoutY="147.0" promptText="User" />
-            <PasswordField fx:id="txtPasword" layoutX="120.0" layoutY="190.0" promptText="Password" />
-            <Label layoutX="140.0" layoutY="36.0" prefHeight="18.0" prefWidth="117.0" text="LOGIN" textFill="#f4eded">
+            <TextField fx:id="txtUser" layoutX="166.0" layoutY="172.0" promptText="User" />
+            <PasswordField fx:id="txtPasword" layoutX="166.0" layoutY="215.0" promptText="Password" />
+            <Label layoutX="186.0" layoutY="61.0" prefHeight="18.0" prefWidth="117.0" text="LOGIN" textFill="#f4eded">
                <font>
                   <Font size="32.0" />
                </font>
             </Label>
-            <Button fx:id="btnlogin" layoutX="149.0" layoutY="231.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="89.0" text="INGRESAR" />
-            <ImageView fitHeight="33.0" fitWidth="44.0" layoutX="80.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
+            <Button fx:id="btnlogin" layoutX="192.0" layoutY="271.0" mnemonicParsing="false" onAction="#clicEntrar" prefHeight="26.0" prefWidth="89.0" style="-fx-background-color: #a5d6a7;" text="INGRESAR" />
+            <ImageView fitHeight="33.0" fitWidth="44.0" layoutX="126.0" layoutY="211.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/icons8-lock-50.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="33.0" fitWidth="36.0" layoutX="80.0" layoutY="143.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="33.0" fitWidth="36.0" layoutX="126.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/icons8-user-30.png" />
                </image>

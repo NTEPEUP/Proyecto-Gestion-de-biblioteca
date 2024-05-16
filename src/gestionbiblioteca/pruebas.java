@@ -8,21 +8,16 @@ package gestionbiblioteca;
  *
  * @author Nelson
  */
-public class GestionBiblioteca {
+public class pruebas {
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        //probando la conexion .
-   
-        coneccion establecer=new coneccion();
-       
-        
-        establecer.establecerConexion();
-     
-        
+        clienteDB c1=new clienteDB();
+        cliente a1=new cliente("nelson", "san juan", "12345678", "3035-80917-0110");
+        c1.agregar(a1);
         
     }
     

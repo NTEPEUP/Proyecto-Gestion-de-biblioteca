@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #c8e6c9;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.PrincipalController">
+   <children>
+      <ImageView fitHeight="128.0" fitWidth="137.0" layoutX="16.0" layoutY="127.0" onMouseClicked="#cargarLibros">
+         <image>
+            <Image url="@../images/libro-abierto.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="113.0" fitWidth="149.0" layoutX="412.0" layoutY="144.0" onMouseClicked="#cargarClientes">
+         <image>
+            <Image url="@../images/objetivo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="103.0" fitWidth="149.0" layoutX="218.0" layoutY="139.0" onMouseClicked="#cargarPtm">
+         <image>
+            <Image url="@../images/pagar.png" />
+         </image>
+      </ImageView>
+      <MenuBar layoutY="1.0" nodeOrientation="LEFT_TO_RIGHT" style="-fx-background-color: #c8e6c9;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Archivo">
+            <items>
+              <MenuItem mnemonicParsing="false" text="Salir" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Acerca de">
+            <items>
+              <MenuItem mnemonicParsing="false" text="version 1.0" />
+            </items>
+          </Menu>
+          <Menu mnemonicParsing="false" text="Salir">
+            <items>
+              <MenuItem mnemonicParsing="false" text="close" />
+            </items>
+          </Menu>
+        </menus>
+         <cursor>
+            <Cursor fx:constant="DEFAULT" />
+         </cursor>
+      </MenuBar>
+      <Label layoutX="158.0" layoutY="37.0" text="GESTOR DE BIBLIOTECA" textOverrun="CLIP">
+         <font>
+            <Font name="Bookshelf Symbol 7" size="23.0" />
+         </font>
+      </Label>
+      <Label layoutX="42.0" layoutY="270.0" text="LIBROS" />
+      <Label layoutX="240.0" layoutY="270.0" prefHeight="18.0" prefWidth="137.0" text="PRESTAMO DE LIBROS" />
+      <Label layoutX="448.0" layoutY="270.0" text="CLIENTES" />
+   </children>
+   <cursor>
+      <Cursor fx:constant="DEFAULT" />
+   </cursor>
+</AnchorPane>

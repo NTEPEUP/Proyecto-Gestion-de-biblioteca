@@ -5,6 +5,7 @@
 package gestionbiblioteca;
 
 import java.io.IOException;
+import java.util.concurrent.ConcurrentMap;
 import javafx.application.Application;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,6 +22,15 @@ import javafx.stage.Stage;
  */
 public class Menu extends Application {
     
+  public static Stage currentStage;
+  
+  
+  
+  
+  
+  
+  
+  //cargar ventana principal
     @Override
     public void start(Stage primaryStage) throws IOException {
        
@@ -29,14 +39,14 @@ public class Menu extends Application {
                     Scene escena=new Scene(root);
                     primaryStage.setScene(escena);
                     primaryStage.show();
-    
+                    currentStage=primaryStage;
     }
-
-    /**
-     * @param args the command line arguments
-     */
+    //cerrar las ventanas
+    public void cerrarVentana(Stage stage){
+     stage.close();
+    }
     public static void main(String[] args) {
         launch(args);
+        //
     }
-    
 }
