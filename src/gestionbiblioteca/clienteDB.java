@@ -4,9 +4,12 @@
  */
 package gestionbiblioteca;
 
-import com.sun.jdi.connect.spi.Connection;
+
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -34,7 +37,7 @@ public class clienteDB {
             st.setString(1, e.getNombre());
             st.setString(2, e.getDireccion());
             st.setString(3, e.getTelefono());
-            st.setString(4, e.getIdentifiacion());
+            st.setString(4, e.getIdentificacion());
             
             st.executeUpdate();
             
@@ -52,6 +55,51 @@ public class clienteDB {
     }
     
     
-    
-    
+    public ArrayList<cliente> obtenerTodos() {
+        
+        Statement st = null;
+        ResultSet rs = null;
+        ArrayList<cliente> a = new ArrayList();
+        
+        try {
+            String sql = """
+                         SELECT * 
+                         FROM cliente
+                         """;
+            st = conn.createStatement();
+            rs = st.executeQuery(sql);
+            while (rs.next()) {
+                
+           
+              
+            
+             
+               
+                 a.add(new cliente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
+                
+             }
+           
+            
+            return a;
+        } catch (SQLException ex) {
+            Logger.getLogger(clienteDB.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            try {
+                if (rs != null) {
+                    rs.close();
+                }
+                
+                if (st != null) {
+                    st.close();
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(clienteDB.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+
+        return null;
+    }
 }
+    
+    
+

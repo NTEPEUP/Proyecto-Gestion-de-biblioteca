@@ -4,23 +4,56 @@
  */
 package controlador;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+
+
+import gestionbiblioteca.cliente;
+import gestionbiblioteca.clienteDB;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+
+
+import javafx.scene.control.TextField;
 
 /**
  * FXML Controller class
  *
  * @author Nelson
  */
-public class FormClientesController implements Initializable {
-
+public class FormClientesController { 
     /**
      * Initializes the controller class.
+     * 
+     
+     * 
      */
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
-        // TODO
-    }    
+    @FXML
+    private TextField txtDirCliente;
+
+    @FXML
+    private TextField txtIdCliente;
+
+    @FXML
+    private TextField txtNombreCliente;
+
+    @FXML
+    private TextField txtTelCliente;
+   
+    
+  
+    @FXML
+    public void guardarCliente(ActionEvent event) {
+        try {
+            clienteDB c1=new clienteDB();
+     c1.agregar(new cliente(txtNombreCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+        } catch (Exception e) {
+            
+        }
+  
+     
+        }
+    
+    
+    
+   
     
 }

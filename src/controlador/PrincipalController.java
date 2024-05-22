@@ -30,7 +30,7 @@ public class PrincipalController {
      
     public void cargarClientes(MouseEvent event) {
         try {
-                Parent root=FXMLLoader.load(getClass().getResource("/view/formClientes.fxml"));
+                Parent root=FXMLLoader.load(getClass().getResource("/view/menuClientes.fxml"));
                     Scene escena=new Scene(root);
                     cargarclienteStage.setScene(escena);
                     cargarclienteStage.show();

@@ -4,7 +4,6 @@
  */
 package gestionbiblioteca;
 
-import java.beans.beancontext.BeanContextMembershipEvent;
 import java.io.Serializable;
 
 /**
@@ -13,17 +12,22 @@ import java.io.Serializable;
  */
 public class cliente implements Serializable{
     //clase cliente
-    private String nombre;
+    public String nombre;
     private String direccion;
     private String telefono;
-    private String identifiacion;
+    private String identificacion;
 
     public cliente(String nombre, String direccion, String telefono, String identifiacion) {
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
-        this.identifiacion = identifiacion;
+        this.identificacion = identifiacion;
     }
+
+  
+ 
+
+    
 
     public String getNombre() {
         return nombre;
@@ -49,12 +53,16 @@ public class cliente implements Serializable{
         this.telefono = telefono;
     }
 
-    public String getIdentifiacion() {
-        return identifiacion;
+    public String getIdentificacion() {
+        return identificacion;
     }
 
-    public void setIdentifiacion(String identifiacion) {
-        this.identifiacion = identifiacion;
+    public void setIdentificacion(String identificacion) {
+        this.identificacion = identificacion;
+    }
+
+    public void nombre() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
    
