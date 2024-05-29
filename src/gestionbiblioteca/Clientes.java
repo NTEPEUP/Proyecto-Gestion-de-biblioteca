@@ -10,29 +10,14 @@ import java.io.Serializable;
  *
  * @author Nelson
  */
-public class cliente implements Serializable{
-    //clase cliente
-    private String nombre;
+public class Clientes implements Serializable {
+    public String nombre;
     private String direccion;
     private String telefono;
     private String identificacion;
-    
-    public cliente(){
+
+    public Clientes() {
     }
-
-    public cliente(String nombre, String direccion, String telefono, String identificacion) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.telefono = telefono;
-        this.identificacion = identificacion;
-    }
-
-   
-
-  
- 
-
-    
 
     public String getNombre() {
         return nombre;
@@ -66,8 +51,15 @@ public class cliente implements Serializable{
         this.identificacion = identificacion;
     }
 
-   
+    @Override
+    public String toString() {
+        return "Clientes{" + "nombre=" + nombre + ", direccion=" + direccion + ", telefono=" + telefono + ", identificacion=" + identificacion + '}';
+    }
     
-   
+    
+    
+    
+
+    
     
 }

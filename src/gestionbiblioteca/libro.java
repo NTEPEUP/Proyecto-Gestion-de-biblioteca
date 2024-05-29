@@ -4,32 +4,32 @@
  */
 package gestionbiblioteca;
 
-import java.io.Serializable;
-
 /**
  *
- * @author Nelsonhhg
+ * @author Nelson
  */
-public class libro implements Serializable{
-    
- //definimos los atributos de la clase libro
-private String ISBN;
-private String titulo;
-private String autor;
-private String anio;
-private String editorial;
-private String stock;
+public class libro {
+    private String ISBN;
+    private String titulo;
+    private String autor;
+    private String anioPublicacion;
+    private String editorial;
+    private String stock;
 
-    public libro(String ISBN, String titulo, String autor, String año, String editorial, String stock) {
+    public libro(){
+    
+    }
+    
+    public libro(String ISBN, String titulo, String autor, String anioPublicacion, String editorial, String stock) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;
-        this.anio = anio;
+        this.anioPublicacion = anioPublicacion;
         this.editorial = editorial;
         this.stock = stock;
     }
 
-    public  String etISBN() {
+    public String getISBN() {
         return ISBN;
     }
 
@@ -53,12 +53,12 @@ private String stock;
         this.autor = autor;
     }
 
-    public String getAño() {
-        return anio;
+    public String getAnioPublicacion() {
+        return anioPublicacion;
     }
 
-    public void setAño(String anio) {
-        this.anio = anio;
+    public void setAnioPublicacion(String anioPublicacion) {
+        this.anioPublicacion = anioPublicacion;
     }
 
     public String getEditorial() {
@@ -73,16 +73,16 @@ private String stock;
         return stock;
     }
 
-    public void setStock(String stock) {
-        this.stock = stock;
+    public void setStock(String Stock) {
+        this.stock = Stock;
     }
 
     @Override
     public String toString() {
-        return "libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", anio=" + anio + ", editorial=" + editorial + '}';
+        return "libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", anioPublicacion=" + anioPublicacion + ", editorial=" + editorial + ", Stock=" + stock + '}';
     }
-
-
-
-
+    
+    
+    
+    
 }

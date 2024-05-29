@@ -25,7 +25,7 @@ public class coneccion {
     
     //String cadena="jdbc prosgresql://"+ip+":"+puerto+":"+bd;
     
-    public Connection establecerConexion(){
+    public coneccion(){
         try {
             Class.forName("org.postgresql.Driver");
           
@@ -36,7 +36,7 @@ public class coneccion {
             JOptionPane.showMessageDialog(null, "conexion fallida");
             
         }
-        return conexion;
+        
     
     }
 
@@ -44,6 +44,9 @@ public class coneccion {
         return conexion;
     }
 
+  
+    }
+
    
     
-}
+

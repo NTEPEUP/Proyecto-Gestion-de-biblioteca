@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="327.0" prefWidth="423.0" style="-fx-background-color: #f0f4c3;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FormPrestamoController">
+<AnchorPane id="AnchorPane" prefHeight="327.0" prefWidth="423.0" style="-fx-background-color: #37474f;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FormPrestamoController">
    <children>
-      <Label layoutX="74.0" layoutY="83.0" text="Fecha de prestamo" />
-      <Label layoutX="74.0" layoutY="116.0" text="Fecha de devolucion" />
-      <Button layoutX="152.0" layoutY="244.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #dcedc8;" text="Guardar" />
-      <Label layoutX="116.0" layoutY="14.0" text="REGISTRO DE PRESTAMOS">
+      <Label layoutX="74.0" layoutY="83.0" text="Fecha de prestamo" textFill="WHITE" />
+      <Label layoutX="74.0" layoutY="116.0" text="Fecha de devolucion" textFill="WHITE" />
+      <Button layoutX="187.0" layoutY="238.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="81.0" style="-fx-background-color: #dcedc8;" text="Guardar" />
+      <Label layoutX="116.0" layoutY="14.0" text="REGISTRO DE PRESTAMOS" textFill="WHITE">
          <font>
             <Font size="17.0" />
          </font>

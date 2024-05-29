@@ -19,7 +19,13 @@ public class prestamo implements Serializable{
         return idPtmo;
         
     }
-
+    public prestamo(){
+    
+    
+    
+    }
+    
+    
     public prestamo(String fechaPtmo, String fechaDev) {
         this.fechaPtmo = fechaPtmo;
         this.fechaDev = fechaDev;

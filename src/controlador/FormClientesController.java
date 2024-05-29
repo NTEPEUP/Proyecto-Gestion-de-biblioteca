@@ -38,16 +38,18 @@ public class FormClientesController {
     @FXML
     private TextField txtTelCliente;
    
-    
+   
   
     @FXML
     public void guardarCliente(ActionEvent event) {
         try {
             clienteDB c1=new clienteDB();
-     c1.agregar(new cliente(txtNombreCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+     c1.registrar(new cliente(txtNombreCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+          
         } catch (Exception e) {
             
         }
+        
   
      
         }

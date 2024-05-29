@@ -4,6 +4,9 @@
  */
 package gestionbiblioteca;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author Nelson
@@ -15,10 +18,7 @@ public class pruebas {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        clienteDB c1=new clienteDB();
-        cliente a1=new cliente("nelson", "san juan", "12345678", "3035-80917-0110");
-        c1.agregar(a1);
-        
-    }
+       coneccion n=new coneccion();
+       n.getConexion();
     
-}
+}}

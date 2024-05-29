@@ -5,25 +5,152 @@
 package gestionbiblioteca;
 
 
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 
 /**
  *
  * @author Nelson
  */
 public class clienteDB {
+    
+      private coneccion bibliotecaConexion=new coneccion();
+    public clienteDB(){
+        this.bibliotecaConexion=new coneccion();
+  
+    
+    }
+    
+    
+    public boolean registrar(cliente cliente){
+    
+        try {
+            String sql="INSERT INTO cliente(nombre,direccion,telefono,identificacion) "
+                    + "VALUES(?,?,?,?)";
+            
+            Connection connection=this.bibliotecaConexion.getConexion();
+            PreparedStatement sentencia=connection.prepareStatement(sql);
+            
+            sentencia.setString(1, cliente.getNombre());
+            sentencia.setString(2, cliente.getDireccion());
+            sentencia.setString(3, cliente.getTelefono());
+            sentencia.setString(4, cliente.getIdentificacion());
+            
+            sentencia.executeUpdate();
+            sentencia.close();
+            
+            return true;
+               
+            
+            
+        } catch (Exception e) {
+        }
+        return false;
+    }
+    
+    
+    
+    //metodo para eliminar 
+    
+    public boolean eliminar(String identificacion){
+        try {
+            
+            String sql="DELETE FROM cliente WHERE identificacion=?";
+            Connection connection=this.bibliotecaConexion.getConexion();
+            PreparedStatement sentencia=connection.prepareStatement(sql);
+            sentencia.setString(4, identificacion);
+            sentencia.executeUpdate();
+            sentencia.close();
+            
+        } catch (Exception e) {
+        }
+        return true;
+    }
+    
+    
+    //metodo para editar los clientes
+    
+    public void editar(cliente cliente){
+        try {
+            String sql="UDPATE cliente SET nombre=?,direccion=?,telefono=?,identificacion=? "
+                    + "WHERE identificacion=?";
+            
+            Connection connection=this.bibliotecaConexion.getConexion();
+            PreparedStatement sentencia=connection.prepareStatement(sql);
+            sentencia.setString(1, cliente.getNombre() );
+            sentencia.setString(2, cliente.getDireccion() );
+            sentencia.setString(3, cliente.getTelefono() );
+            sentencia.setString(4, cliente.getIdentificacion() );
+                
+       
+            sentencia.executeUpdate();
+            sentencia.close();
+        } catch (Exception e) {
+        }
+    
+   
+    }
+    
+    //metodo para listar clientes
+    
+    public List<cliente>listar  (){
+        
+     List <cliente> listaClientes=new ArrayList<>();
+        try {
+            
+            String sql="SELECT* FROM cliente";
+            Connection connection=this.bibliotecaConexion.getConexion();
+            PreparedStatement sentencia=connection.prepareStatement(sql);
+            ResultSet data=sentencia.executeQuery();
+            
+            while (data.next()) {                
+                cliente e=new cliente();
+                e.setNombre(data.getString(1) );
+                e.setDireccion(data.getString(2) );
+                e.setTelefono(data.getString(3) );
+                e.setIdentificacion(data.getString(4) );
+                
+                listaClientes.add(e);
+                
+                
+            }
+            data.close();
+            sentencia.close();
+            
+           
+            
+        } catch (Exception e) {
+        }
+        return listaClientes;
+    
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    /**
    java.sql.Connection conn;
     
     public clienteDB() {
         conn = conexionBD.getConnection();
     }
-    
+    // metodo para agregar clientes a la base de datos
     public void agregar(cliente e) {
         
     PreparedStatement st = null;
@@ -54,52 +181,71 @@ public class clienteDB {
         }
     }
     
-    
-    public ArrayList<cliente> obtenerTodos() {
+    //meto d
+    public void mostrarLibros(ArrayList<cliente> obtenerTodos ){
         
-        Statement st = null;
+        PreparedStatement st = null;
         ResultSet rs = null;
-        ArrayList<cliente> a = new ArrayList();
+       
+        
+        try {
+            
+              
+              String sql = """
+                         SELECT * 
+                         FROM cliente
+                         """;
+          st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
+            while (rs.next()) {
+                
+      
+                cliente e=new cliente();
+                e.setNombre(rs.getString(1));
+                e.setDireccion(rs.getString(2));
+                e.setTelefono(rs.getString(3));
+                e.setIdentificacion(rs.getString(4));
+                
+                obtenerTodos.add(e);
+             }
+                rs.close();
+                st.close();
+            
+        } catch (SQLException e) {
+            
+        }
+
+        
+    }
+    public ObservableList<cliente> listar(){
+       PreparedStatement st = null;
+        ResultSet rs = null;
+       ObservableList<cliente> a = FXCollections.observableArrayList();
         
         try {
             String sql = """
                          SELECT * 
                          FROM cliente
                          """;
-            st = conn.createStatement();
-            rs = st.executeQuery(sql);
+            st = conn.prepareStatement(sql);
+            rs = st.executeQuery();
             while (rs.next()) {
-                
            
-              
-            
-             
                
                  a.add(new cliente(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4)));
-                
+               
              }
+            rs.close();
+            
            
             
-            return a;
+            
         } catch (SQLException ex) {
             Logger.getLogger(clienteDB.class.getName()).log(Level.SEVERE, null, ex);
-        } finally {
-            try {
-                if (rs != null) {
-                    rs.close();
-                }
-                
-                if (st != null) {
-                    st.close();
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(clienteDB.class.getName()).log(Level.SEVERE, null, ex);
-            }
         }
-
-        return null;
-    }
-}
+        return a;
+    
+}*/}
     
     
 

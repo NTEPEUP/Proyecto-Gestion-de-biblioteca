@@ -7,9 +7,13 @@ package controlador;
 import gestionbiblioteca.cliente;
 import gestionbiblioteca.clienteDB;
 import java.io.IOException;
+import java.lang.invoke.MethodHandles;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -18,9 +22,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -28,66 +35,145 @@ import javafx.stage.Stage;
  *
  * @author Nelson
  */
-public class MenuClientesController  {
+public class MenuClientesController  implements Initializable  {
 
     /**
      * Initializes the controller class.
      */
     Stage registrarClienteStage=new Stage ();
     
-    
-    
       @FXML
-    private TableColumn<cliente, String> dirCliente;
+    private Button btnGuardarCliente;
+    @FXML
+    private TextField txtDirCliente;
 
     @FXML
-    private TableColumn<cliente, String> dpi;
+    private TextField txtIdCliente;
 
     @FXML
-    private TableColumn<cliente, String> nomUsuario;
+    private TextField txtNomCliente;
 
+    @FXML
+    private TextField txtTelCliente;
+      
     
-    @FXML
-    private TableColumn<cliente, String> telCliente;
+    
+    
+    
     @FXML
     private TableView<cliente> tblRegistro;
 
-    
+    private clienteDB clienteB;
    
-    clienteDB clienteB=new clienteDB();
+  String identificacion;
+    
     
      public void initialize(URL url, ResourceBundle rb) {
+         
+         this.clienteB=new clienteDB();
+         
+         cargarClientes();
         // TODO
     }  
+     
+     //METODO PARA GUARDAR CLIENTES EN LA BASE DE DATOS
+     
+     @FXML
+      public void guardarCliente(ActionEvent event) {
+          try {
+              //creamos un objeto de la clase clienteDB
+            clienteDB c1=new clienteDB();
+            //invocamos el metodo registrar de la clase cliente DB y ingresamos datos para registrar datos 
+            //en la tabla de la base de datos
+     c1.registrar(new cliente(txtNomCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+          
+        } catch (Exception e) {
+            
+        }
+
+    }
+      
+      //METODO PARA EDITAR CLIENES
+          @FXML
+    public void editarCliente(ActionEvent event) {
+        clienteDB c2=new clienteDB();
+        c2.registrar(new cliente(txtNomCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+    }
+
+    
+
+    @FXML
+    public void eliminarCliente(ActionEvent event) {
+
+    }
+ 
+    //METODO PARA SELECCIONAR LOS DATOS DE LA TABLA 
+    @FXML
+    public void getDatos(MouseEvent event) {
+        cliente clien=tblRegistro.getSelectionModel().getSelectedItem();
+        identificacion=clien.getIdentificacion();
+        txtNomCliente.setText(clien.getNombre());
+        txtDirCliente.setText(clien.getDireccion());
+         txtTelCliente.setText(clien.getTelefono());
+          txtIdCliente.setText(clien.getIdentificacion());
+          btnGuardarCliente.setDisable(true);
+          
+    }
+
+     
+     
+     
    public void cargarClientes(){
+      tblRegistro.getItems();
+       tblRegistro.getColumns();
        
-       tblRegistro.getItems().clear();
-       tblRegistro.getColumns().clear();
-       
-       
-       List <cliente>clientes=clienteB.obtenerTodos();
-       
+       List<cliente>clientes=this.clienteB.listar();
        ObservableList<cliente>data=FXCollections.observableArrayList(clientes);
        
-       
-       
-       TableColumn nombre=new TableColumn("nombre");
-       nombre.setCellValueFactory(new PropertyValueFactory("nombre"));
-       TableColumn direccion=new TableColumn("direccion");
-       direccion.setCellValueFactory(new PropertyValueFactory("direccion"));
-       TableColumn telefono=new TableColumn("telefono");
-       telefono.setCellValueFactory(new PropertyValueFactory("telefono"));
-       TableColumn identificacion=new TableColumn("identificacion");
-       identificacion.setCellValueFactory(new PropertyValueFactory("identificacion"));
-       
+       TableColumn nomcol=new TableColumn("NOMBRE ");
+       nomcol.setCellValueFactory(new PropertyValueFactory("nombre"));
+       TableColumn dircol=new TableColumn("DIRECCION");
+       dircol.setCellValueFactory(new PropertyValueFactory("direccion"));
+       TableColumn telcol=new TableColumn("TELEFONO");
+       telcol.setCellValueFactory(new PropertyValueFactory("telefono"));
+       TableColumn idcol=new TableColumn("IDENTIFICACION ");
+       idcol.setCellValueFactory(new PropertyValueFactory("identificacion"));
        
        tblRegistro.setItems(data);
-       tblRegistro.getColumns().addAll(nombre,direccion,telefono,identificacion);
+       tblRegistro.getColumns().addAll(nomcol,dircol,telcol,idcol);
+        
+   }
+       /**
+       tblRegistro.getItems();
+       tblRegistro.getColumns();
        
        
+       ArrayList<cliente>lista=new ArrayList<>();
+       
+       clienteB.mostrarLibros(lista);
+       
+       listaOriginal=FXCollections.observableArrayList(lista);
+       
+       TableColumn nomcol=new TableColumn("NOMBRE ");
+       nomcol.setCellValueFactory(new PropertyValueFactory("nombre"));
+       TableColumn dircol=new TableColumn("DIRECCION");
+       dircol.setCellValueFactory(new PropertyValueFactory("direccion"));
+       TableColumn telcol=new TableColumn("TELEFONO");
+       telcol.setCellValueFactory(new PropertyValueFactory("telefono"));
+       TableColumn idcol=new TableColumn("IDENTIFICACION ");
+       idcol.setCellValueFactory(new PropertyValueFactory("identificacion"));
+       
+       tblRegistro.getColumns().addAll(nomcol,dircol,telcol,idcol);
+       tblRegistro.setItems(listaOriginal);
        
        
-               }
+   }
+       
+  */     
+      
+     
+       
+   
   
    
     

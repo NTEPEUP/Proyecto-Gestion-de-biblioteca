@@ -8,22 +8,22 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="474.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FormClientesController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="474.0" style="-fx-background-color: #37474f;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.FormClientesController">
    <children>
       <ImageView fitHeight="70.0" fitWidth="74.0" layoutX="70.0" layoutY="14.0">
          <image>
             <Image url="@../images/16363.png" />
          </image>
       </ImageView>
-      <Label layoutX="199.0" layoutY="49.0" text="REGISTRO DE CLIENTES">
+      <Label layoutX="199.0" layoutY="49.0" text="REGISTRO DE CLIENTES" textFill="WHITE">
          <font>
             <Font size="15.0" />
          </font>
       </Label>
-      <Label layoutX="108.0" layoutY="147.0" text="Nombre" />
-      <Label layoutX="107.0" layoutY="181.0" text="Direccion" />
-      <Label layoutX="107.0" layoutY="218.0" text="Telefono" />
-      <Label layoutX="107.0" layoutY="256.0" text="No. identificacion" />
+      <Label layoutX="108.0" layoutY="147.0" text="Nombre" textFill="#fffdfd" />
+      <Label layoutX="107.0" layoutY="181.0" text="Direccion" textFill="#fffbfb" />
+      <Label layoutX="107.0" layoutY="218.0" text="Telefono" textFill="WHITE" />
+      <Label layoutX="107.0" layoutY="256.0" text="No. identificacion" textFill="WHITE" />
       <TextField fx:id="txtNombreCliente" layoutX="206.0" layoutY="143.0" />
       <TextField fx:id="txtDirCliente" layoutX="206.0" layoutY="177.0" />
       <TextField fx:id="txtTelCliente" layoutX="206.0" layoutY="214.0" />

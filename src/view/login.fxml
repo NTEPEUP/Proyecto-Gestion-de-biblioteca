@@ -13,7 +13,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="385.0" prefWidth="417.0" style="-fx-background-color: #0277bd;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controlador.LoginController">
    <children>
-      <AnchorPane layoutY="-1.0" prefHeight="386.0" prefWidth="445.0" style="-fx-background-color: #212121;">
+      <AnchorPane layoutY="-1.0" prefHeight="386.0" prefWidth="445.0" style="-fx-background-color: #37474f;">
          <children>
             <TextField fx:id="txtUser" layoutX="166.0" layoutY="172.0" promptText="User" />
             <PasswordField fx:id="txtPasword" layoutX="166.0" layoutY="215.0" promptText="Password" />
