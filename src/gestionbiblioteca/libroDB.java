@@ -76,7 +76,7 @@ public class libroDB {
     
     public boolean editar(libro libro){
         try {
-            String sql="UDPATE libro SET ISBN=?,titulo=?,autor=?,anioPublicacion=?,editorial=?"
+            String sql="UPDATE libro SET ISBN=?,titulo=?,autor=?,anioPublicacion=?,editorial=?"
                     + "WHERE ISBN=?";
             
             Connection connection=this.bibliotecaConexion.getConexion();
@@ -86,6 +86,7 @@ public class libroDB {
             sentencia.setString(3, libro.getAutor());
             sentencia.setString(4, libro.getAnioPublicacion());
             sentencia.setString(5, libro.getEditorial());
+            sentencia.setString(6, libro.getISBN());
        
                 
        

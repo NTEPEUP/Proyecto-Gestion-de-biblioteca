@@ -119,12 +119,21 @@ public class MenuClientesController  implements Initializable  {
                           clienteDB c2=new clienteDB();
                           cliente c22=new cliente();
         
+        c22.setIdentificacion(txtIdCliente.getText());
         c22.setNombre(txtNomCliente.getText());
         c22.setDireccion(txtDirCliente.getText());
         c22.setTelefono(txtTelCliente.getText());
-        c22.setIdentificacion(txtIdCliente.getText());
+                  
         
-        clienteB.editar(c22);
+        
+        c2.editar(c22);
+         Alert mensaje= new Alert(Alert.AlertType.CONFIRMATION);
+            mensaje.setTitle("CONFIRMACION ");
+            mensaje.setHeaderText("");
+            mensaje.setContentText("REGISTRO EDITADO CORRECTAMENTE");
+            mensaje.showAndWait();
+        cargarClientes();
+        
         
               } catch (Exception e) {
               }

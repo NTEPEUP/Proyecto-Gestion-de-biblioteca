@@ -20,7 +20,7 @@
             <TableColumn fx:id="aPublicacion" prefWidth="75.0" text="AÑO PUBLICACION" />
             <TableColumn fx:id="editorialCol" prefWidth="75.0" text="EDITORIAL" />
          </columns></TableView>
-      <Button layoutX="142.0" layoutY="332.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="58.0" text="Editar" />
+      <Button layoutX="142.0" layoutY="332.0" mnemonicParsing="false" onAction="#editarLibro" prefHeight="26.0" prefWidth="58.0" text="Editar" />
       <Button fx:id="btnEliminar" layoutX="60.0" layoutY="333.0" mnemonicParsing="false" onAction="#EliminarLibro" text="Eliminar" />
       <Button layoutX="657.0" layoutY="346.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="106.0" text="Agregar libro" />
       <Label layoutX="452.0" layoutY="31.0" prefHeight="42.0" prefWidth="146.0" text="LIBROS" textFill="WHITE">

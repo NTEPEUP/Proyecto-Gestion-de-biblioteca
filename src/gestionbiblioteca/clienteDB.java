@@ -85,7 +85,7 @@ public class clienteDB {
     
     public boolean editar(cliente cliente){
         try {
-            String sql="UDPATE cliente SET nombre=?,direccion=?,telefono=?"
+            String sql="UPDATE cliente SET nombre=?,direccion=?,telefono=?"
                     + "WHERE identificacion=?";
             
             Connection connection=this.bibliotecaConexion.getConexion();

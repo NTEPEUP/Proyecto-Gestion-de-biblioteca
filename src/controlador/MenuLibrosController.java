@@ -11,6 +11,7 @@ import gestionbiblioteca.libroDB;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.Set;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -110,11 +111,38 @@ public class MenuLibrosController implements Initializable {
         Alert mensaje= new Alert(Alert.AlertType.CONFIRMATION);
             mensaje.setTitle("CONFIRMACION ");
             mensaje.setHeaderText("");
-            mensaje.setContentText("Cliente eliminado correctamente");
+            mensaje.setContentText("Libro eliminado correctamente");
             mensaje.showAndWait();
            cargarLibros();
 
     }
+   
+   
+    @FXML
+   public void editarLibro(ActionEvent event) {
+        try {
+            libroDB libro1=new libroDB();
+            libro libro11=new libro();
+            libro11.setISBN(txtISBN.getText());
+            libro11.setTitulo(txtTitulo.getText());
+            libro11.setAutor(txtAutor.getText());
+            libro11.setAnioPublicacion(txtAnio.getText());
+            libro11.setEditorial(txtEditorial.getText());
+            libro1.editar(libro11);
+             Alert mensaje= new Alert(Alert.AlertType.CONFIRMATION);
+            mensaje.setTitle("CONFIRMACION ");
+            mensaje.setHeaderText("");
+            mensaje.setContentText("libro editado correctamente");
+            mensaje.showAndWait();
+            cargarLibros();
+            
+            
+            
+        } catch (Exception e) {
+        }
+
+    }
+
 
        //METODO, CUANDO HACEMOS CLIC EN ALGUNO DE LOS REGISTRO DE LA TABLA
     //AUTOMATICAMENTE SE LLENAN LO TEXTFIELDS 
