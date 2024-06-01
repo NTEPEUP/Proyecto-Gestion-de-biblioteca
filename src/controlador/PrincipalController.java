@@ -45,7 +45,7 @@ public class PrincipalController {
     
     public void cargarLibros(MouseEvent event) {
          try {
-                Parent root=FXMLLoader.load(getClass().getResource("/view/formLibros.fxml"));
+                Parent root=FXMLLoader.load(getClass().getResource("/view/menuLibros.fxml"));
                     Scene escena=new Scene(root);
                     cargarclienteStage.setScene(escena);
                     cargarclienteStage.show();

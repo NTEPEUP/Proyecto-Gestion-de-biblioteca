@@ -18,6 +18,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.stage.Stage;
 
 /**
  *
@@ -36,9 +37,10 @@ public class clienteDB {
     public boolean registrar(cliente cliente){
     
         try {
+            //defino la consulta hacia la base de datos
             String sql="INSERT INTO cliente(nombre,direccion,telefono,identificacion) "
                     + "VALUES(?,?,?,?)";
-            
+            //Defino la conexion con la base de datos
             Connection connection=this.bibliotecaConexion.getConexion();
             PreparedStatement sentencia=connection.prepareStatement(sql);
             
@@ -63,13 +65,13 @@ public class clienteDB {
     
     //metodo para eliminar 
     
-    public boolean eliminar(String identificacion){
+    public boolean eliminar(cliente identificacion){
         try {
             
             String sql="DELETE FROM cliente WHERE identificacion=?";
             Connection connection=this.bibliotecaConexion.getConexion();
             PreparedStatement sentencia=connection.prepareStatement(sql);
-            sentencia.setString(4, identificacion);
+            sentencia.setString(1, identificacion.getIdentificacion());
             sentencia.executeUpdate();
             sentencia.close();
             
@@ -81,9 +83,9 @@ public class clienteDB {
     
     //metodo para editar los clientes
     
-    public void editar(cliente cliente){
+    public boolean editar(cliente cliente){
         try {
-            String sql="UDPATE cliente SET nombre=?,direccion=?,telefono=?,identificacion=? "
+            String sql="UDPATE cliente SET nombre=?,direccion=?,telefono=?"
                     + "WHERE identificacion=?";
             
             Connection connection=this.bibliotecaConexion.getConexion();
@@ -91,12 +93,16 @@ public class clienteDB {
             sentencia.setString(1, cliente.getNombre() );
             sentencia.setString(2, cliente.getDireccion() );
             sentencia.setString(3, cliente.getTelefono() );
+            
             sentencia.setString(4, cliente.getIdentificacion() );
                 
        
             sentencia.executeUpdate();
             sentencia.close();
+            
+            return true;
         } catch (Exception e) {
+            return false;
         }
     
    

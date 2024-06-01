@@ -4,6 +4,7 @@
  */
 package controlador;
 
+import com.sun.marlin.DualPivotQuicksort20191112Ext;
 import gestionbiblioteca.cliente;
 import gestionbiblioteca.clienteDB;
 import java.io.IOException;
@@ -22,6 +23,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -56,7 +58,17 @@ public class MenuClientesController  implements Initializable  {
     @FXML
     private TextField txtTelCliente;
       
-    
+    //Variables de las columnas
+     @FXML
+    private TableColumn<cliente, String> dirCol;
+
+    @FXML
+    private TableColumn<cliente, String> idCol;
+
+    @FXML
+    private TableColumn<cliente, String> nomCol;
+       @FXML     
+    private TableColumn<cliente, String> telCol;
     
     
     
@@ -86,24 +98,53 @@ public class MenuClientesController  implements Initializable  {
             //invocamos el metodo registrar de la clase cliente DB y ingresamos datos para registrar datos 
             //en la tabla de la base de datos
      c1.registrar(new cliente(txtNomCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+     // ventana pra indicar que los datos fueron guardados correctamente
+      Alert mensaje= new Alert(Alert.AlertType.CONFIRMATION);
+            mensaje.setTitle("CONFIRMACION ");
+            mensaje.setHeaderText("");
+            mensaje.setContentText("DATOS GUARDADOS CORRECTAMENTE");
+            mensaje.showAndWait();
+              cargarClientes();
           
         } catch (Exception e) {
             
         }
-
     }
       
       //METODO PARA EDITAR CLIENES
           @FXML
     public void editarCliente(ActionEvent event) {
-        clienteDB c2=new clienteDB();
-        c2.registrar(new cliente(txtNomCliente.getText(), txtDirCliente.getText(),txtTelCliente.getText(),txtIdCliente.getText()));
+        
+              try {
+                          clienteDB c2=new clienteDB();
+                          cliente c22=new cliente();
+        
+        c22.setNombre(txtNomCliente.getText());
+        c22.setDireccion(txtDirCliente.getText());
+        c22.setTelefono(txtTelCliente.getText());
+        c22.setIdentificacion(txtIdCliente.getText());
+        
+        clienteB.editar(c22);
+        
+              } catch (Exception e) {
+              }
     }
 
     
 
     @FXML
     public void eliminarCliente(ActionEvent event) {
+        clienteDB c4=new clienteDB();
+        cliente c44=new cliente();
+        c44.setIdentificacion(txtIdCliente.getText());
+        clienteB.eliminar(c44);
+        Alert mensaje= new Alert(Alert.AlertType.CONFIRMATION);
+            mensaje.setTitle("CONFIRMACION ");
+            mensaje.setHeaderText("");
+            mensaje.setContentText("Cliente eliminado correctamente");
+            mensaje.showAndWait();
+           cargarClientes();
+        
 
     }
  
@@ -115,12 +156,14 @@ public class MenuClientesController  implements Initializable  {
         txtNomCliente.setText(clien.getNombre());
         txtDirCliente.setText(clien.getDireccion());
          txtTelCliente.setText(clien.getTelefono());
-          txtIdCliente.setText(clien.getIdentificacion());
+         txtIdCliente.setText(clien.getIdentificacion());
+         
           btnGuardarCliente.setDisable(true);
           
     }
 
-     
+    
+    //
      
      
    public void cargarClientes(){
@@ -130,17 +173,17 @@ public class MenuClientesController  implements Initializable  {
        List<cliente>clientes=this.clienteB.listar();
        ObservableList<cliente>data=FXCollections.observableArrayList(clientes);
        
-       TableColumn nomcol=new TableColumn("NOMBRE ");
-       nomcol.setCellValueFactory(new PropertyValueFactory("nombre"));
-       TableColumn dircol=new TableColumn("DIRECCION");
-       dircol.setCellValueFactory(new PropertyValueFactory("direccion"));
-       TableColumn telcol=new TableColumn("TELEFONO");
-       telcol.setCellValueFactory(new PropertyValueFactory("telefono"));
-       TableColumn idcol=new TableColumn("IDENTIFICACION ");
-       idcol.setCellValueFactory(new PropertyValueFactory("identificacion"));
+       
+       nomCol.setCellValueFactory(new PropertyValueFactory("nombre"));
+       
+       dirCol.setCellValueFactory(new PropertyValueFactory("direccion"));
+   
+       telCol.setCellValueFactory(new PropertyValueFactory("telefono"));
+       
+       idCol.setCellValueFactory(new PropertyValueFactory("identificacion"));
        
        tblRegistro.setItems(data);
-       tblRegistro.getColumns().addAll(nomcol,dircol,telcol,idcol);
+       
         
    }
        /**

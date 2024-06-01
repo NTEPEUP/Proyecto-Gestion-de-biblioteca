@@ -27,8 +27,8 @@ public class libroDB {
     public boolean registrar(libro libro){
     
         try {
-            String sql="INSERT INTO libro(ISBN,titulo,autor,anioPublicacion,editorial,stock) "
-                    + "VALUES(?,?,?,?,?,?";
+            String sql="INSERT INTO libro(ISBN,titulo,autor,anioPublicacion,editorial) "
+                    + "VALUES(?,?,?,?,?)";
             
             Connection connection=this.bibliotecaConexion.getConexion();
             PreparedStatement sentencia=connection.prepareStatement(sql);
@@ -37,8 +37,8 @@ public class libroDB {
             sentencia.setString(2, libro.getTitulo());
             sentencia.setString(3, libro.getAutor());
             sentencia.setString(4, libro.getAnioPublicacion());
-            sentencia.setString(5, libro.getAnioPublicacion());
-            sentencia.setString(6, libro.getStock());
+            sentencia.setString(5, libro.getEditorial());
+            
             
             sentencia.executeUpdate();
             sentencia.close();
@@ -56,13 +56,13 @@ public class libroDB {
     
     //metodo para eliminar 
     
-    public boolean eliminar(String ISBN){
+    public boolean eliminar(libro ISBN){
         try {
             
             String sql="DELETE FROM libro WHERE ISBN=?";
             Connection connection=this.bibliotecaConexion.getConexion();
             PreparedStatement sentencia=connection.prepareStatement(sql);
-            sentencia.setString(1, ISBN);
+            sentencia.setString(1,ISBN.getISBN());
             sentencia.executeUpdate();
             sentencia.close();
             
@@ -76,7 +76,7 @@ public class libroDB {
     
     public boolean editar(libro libro){
         try {
-            String sql="UDPATE libro SET ISBN=?,titulo=?,autor=?,anioPublicacion=?,editoria=?,stock=? "
+            String sql="UDPATE libro SET ISBN=?,titulo=?,autor=?,anioPublicacion=?,editorial=?"
                     + "WHERE ISBN=?";
             
             Connection connection=this.bibliotecaConexion.getConexion();
@@ -85,8 +85,8 @@ public class libroDB {
             sentencia.setString(2, libro.getTitulo());
             sentencia.setString(3, libro.getAutor());
             sentencia.setString(4, libro.getAnioPublicacion());
-            sentencia.setString(5, libro.getAnioPublicacion());
-            sentencia.setNString(6, libro.getStock());
+            sentencia.setString(5, libro.getEditorial());
+       
                 
        
             sentencia.executeUpdate();
@@ -115,8 +115,8 @@ public class libroDB {
                 e.setTitulo(data.getString(2) );
                 e.setAutor(data.getString(3) );
                 e.setAnioPublicacion(data.getString(4) );
-                e.setEditorial(data.getString(4) );
-                e.setStock(data.getString(4) );
+                e.setEditorial(data.getString(5) );
+               
                 
                 
                 listaLibros.add(e);

@@ -14,19 +14,18 @@ public class libro {
     private String autor;
     private String anioPublicacion;
     private String editorial;
-    private String stock;
-
+    
     public libro(){
     
     }
     
-    public libro(String ISBN, String titulo, String autor, String anioPublicacion, String editorial, String stock) {
+    public libro(String ISBN, String titulo, String autor, String anioPublicacion, String editorial) {
         this.ISBN = ISBN;
         this.titulo = titulo;
         this.autor = autor;
         this.anioPublicacion = anioPublicacion;
         this.editorial = editorial;
-        this.stock = stock;
+        
     }
 
     public String getISBN() {
@@ -69,17 +68,11 @@ public class libro {
         this.editorial = editorial;
     }
 
-    public String getStock() {
-        return stock;
-    }
-
-    public void setStock(String Stock) {
-        this.stock = Stock;
-    }
+  
 
     @Override
     public String toString() {
-        return "libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", anioPublicacion=" + anioPublicacion + ", editorial=" + editorial + ", Stock=" + stock + '}';
+        return "libro{" + "ISBN=" + ISBN + ", titulo=" + titulo + ", autor=" + autor + ", anioPublicacion=" + anioPublicacion + ", editorial=" + editorial +'}';
     }
     
     
